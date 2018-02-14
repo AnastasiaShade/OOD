@@ -43,8 +43,8 @@ bool CController::CreateCircle(const std::vector<int> & args)
 	Point center(args[0], args[1]);
 	int radius = args[2];
 
-	std::shared_ptr<CShape> sphere = std::make_shared<CCircle>(center, radius);
-	m_shapes.push_back(sphere);
+	std::shared_ptr<CShape> shape = std::make_shared<CCircle>(center, radius);
+	m_shapes.push_back(shape);
 	return true;
 }
 
@@ -54,8 +54,8 @@ bool CController::CreateTriangle(const std::vector<int> & args)
 	Point point2(args[2], args[3]);
 	Point point3(args[4], args[5]);
 
-	std::shared_ptr<CShape> sphere = std::make_shared<CTriangle>(point1, point2, point3);
-	m_shapes.push_back(sphere);
+	std::shared_ptr<CShape> shape = std::make_shared<CTriangle>(point1, point2, point3);
+	m_shapes.push_back(shape);
 	return true;
 }
 
@@ -64,8 +64,8 @@ bool CController::CreateRectangle(const std::vector<int> & args)
 	Point point1(args[0], args[1]);
 	Point point2(args[2], args[3]);
 
-	std::shared_ptr<CShape> sphere = std::make_shared<CRectangle>(point1, point2);
-	m_shapes.push_back(sphere);
+	std::shared_ptr<CShape> shape = std::make_shared<CRectangle>(point1, point2);
+	m_shapes.push_back(shape);
 	return true;
 }
 
