@@ -20,6 +20,7 @@ double CTriangle::CalculatePerimeter()
 	double vector1Length = CalculateVectorLength(m_point1, m_point2);
 	double vector2Length = CalculateVectorLength(m_point2, m_point3);
 	double vector3Length = CalculateVectorLength(m_point1, m_point3);
+
 	return (vector1Length + vector2Length + vector3Length);
 }
 

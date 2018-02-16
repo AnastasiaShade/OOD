@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "Controller.h"
 
 CController::CController(std::vector<std::shared_ptr<CShape>> & shapes)
@@ -22,6 +23,7 @@ bool CController::HandleCommand(std::string & line)
 		std::vector<int> args = ConverteToInteger(elements);
 		return it->second(args);
 	}
+
 	return false;
 }
 
@@ -35,6 +37,7 @@ std::vector<int> CController::ConverteToInteger(const std::vector<std::string> &
 			args.push_back(stoi(elements[i]));
 		}
 	}
+
 	return args;
 }
 
@@ -45,6 +48,7 @@ bool CController::CreateCircle(const std::vector<int> & args)
 
 	std::shared_ptr<CShape> shape = std::make_shared<CCircle>(center, radius);
 	m_shapes.push_back(shape);
+
 	return true;
 }
 
@@ -56,6 +60,7 @@ bool CController::CreateTriangle(const std::vector<int> & args)
 
 	std::shared_ptr<CShape> shape = std::make_shared<CTriangle>(point1, point2, point3);
 	m_shapes.push_back(shape);
+
 	return true;
 }
 
@@ -66,6 +71,7 @@ bool CController::CreateRectangle(const std::vector<int> & args)
 
 	std::shared_ptr<CShape> shape = std::make_shared<CRectangle>(point1, point2);
 	m_shapes.push_back(shape);
+
 	return true;
 }
 
@@ -73,9 +79,10 @@ void CController::PrintShapes(const std::vector<std::shared_ptr<CShape>> & shape
 {
 	if (!shapes.empty())
 	{
+		output.setf(std::ios::fixed);
 		for (auto &shape : shapes)
 		{
-			output << shape->GetType() << ": P=" << shape->GetPerimeter() << "; S=" << shape->GetArea() << std::endl;
+			output << std::setprecision(2) << shape->GetType() << ": P=" << shape->GetPerimeter() << "; S=" << shape->GetArea() << std::endl;
 		}
 	}
 	else
